@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx shadcn@latest init --yes)",
+      "Bash(npm run *)",
+      "Bash(gunzip -c \"C:/Users/GDamdelen/.claude/projects/c--Users-GDamdelen-practice-projects-whatsapp-clone/0f79bd2c-55f4-43cf-abda-54046ea31684/tool-results/webfetch-1776950381893-6f4qt7.bin\")",
+      "Read(//tmp/**)",
+      "Bash(npm install *)",
+      "Bash(npm uninstall *)"
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Pulse — design tokens
+   ============================================================ */
+:root {
+  --accent:       oklch(0.70 0.17 150);
+  --accent-hover: oklch(0.65 0.17 150);
+  --accent-soft:  oklch(0.70 0.17 150 / 0.12);
+  --accent-ink:   oklch(0.22 0.05 150);
+
+  --bg-0: #ffffff;
+  --bg-1: #f7f7f5;
+  --bg-2: #efeeea;
+  --bg-3: #e6e5e0;
+  --ink-0: #0b0b0a;
+  --ink-1: #1c1c1a;
+  --ink-2: #4a4a46;
+  --ink-3: #7a7a75;
+  --ink-4: #a8a8a2;
+  --line: #e6e5e0;
+  --line-strong: #d6d5d0;
+
+  --danger: oklch(0.62 0.19 25);
+  --warn:   oklch(0.78 0.14 75);
+  --info:   oklch(0.65 0.14 240);
+
+  --bubble-me:       var(--accent);
+  --bubble-me-ink:   #0a1f14;
+  --bubble-them:     var(--bg-2);
+  --bubble-them-ink: var(--ink-1);
+
+  --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --r-sm:   8px;
+  --r-md:   12px;
+  --r-lg:   18px;
+  --r-xl:   24px;
+  --r-full: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(10,10,8,.04);
+  --shadow-md: 0 4px 16px rgba(10,10,8,.06), 0 1px 3px rgba(10,10,8,.04);
+  --shadow-lg: 0 20px 60px rgba(10,10,8,.14), 0 2px 6px rgba(10,10,8,.05);
+}
+
+[data-theme='dark'] {
+  --bg-0: #0e0f0d;
+  --bg-1: #161714;
+  --bg-2: #1e1f1b;
+  --bg-3: #282923;
+  --ink-0: #f7f7f5;
+  --ink-1: #e6e5e0;
+  --ink-2: #a8a8a2;
+  --ink-3: #7a7a75;
+  --ink-4: #4a4a46;
+  --line: #282923;
+  --line-strong: #33342e;
+  --accent:       oklch(0.74 0.17 150);
+  --accent-hover: oklch(0.80 0.17 150);
+  --accent-soft:  oklch(0.74 0.17 150 / 0.16);
+  --bubble-me-ink: #06140c;
+  --bubble-them: #1e1f1b;
+  --shadow-md: 0 4px 16px rgba(0,0,0,.4), 0 1px 3px rgba(0,0,0,.3);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,.5), 0 2px 6px rgba(0,0,0,.3);
+}
+
+/* ============================================================
+   Base reset
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink-1);
+  background: var(--bg-1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root { width: 100%; height: 100vh; display: flex; }
+
+button { font-family: inherit; border: none; background: none; cursor: pointer; color: inherit; padding: 0; }
+input, textarea { font-family: inherit; border: none; outline: none; background: transparent; color: inherit; }
+input::placeholder, textarea::placeholder { color: var(--ink-3); }
+
+/* ============================================================
+   Pulse logo mark
+   ============================================================ */
+.pulse-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-size: 22px;
+  color: var(--ink-0);
+}
+.pulse-logo-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 22px;
+}
+.pulse-logo-mark span {
+  display: block;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+.pulse-logo-mark span:nth-child(1) { height: 40%; }
+.pulse-logo-mark span:nth-child(2) { height: 70%; }
+.pulse-logo-mark span:nth-child(3) { height: 100%; }
+.pulse-logo-mark span:nth-child(4) { height: 60%; }
+.pulse-logo-mark span:nth-child(5) { height: 30%; }
+
+/* ============================================================
+   Typing indicator
+   ============================================================ */
+.typing-dots { display: inline-flex; gap: 4px; align-items: center; }
+.typing-dots span {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--ink-3);
+  animation: typingBounce 1.2s infinite ease-in-out;
+}
+.typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+/* ============================================================
+   Animations
+   ============================================================ */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+.fade-in  { animation: fadeIn  0.25s ease; }
+.slide-up { animation: slideUp 0.30s ease; }
+.scale-in { animation: scaleIn 0.20s ease; }
+
+/* ============================================================
+   Scrollbar
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-4); }
